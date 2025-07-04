@@ -1,13 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Configuration, OpenAIApi } from 'openai';
+import { OpenAI } from 'openai';
 
 // Allowed origin for CORS (defínelo en variables de entorno)
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? '*';
 
 // OpenAI client (requiere OPENAI_API_KEY)
-const openai = new OpenAIApi(
-  new Configuration({ apiKey: process.env.OPENAI_API_KEY! })
-);
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS
